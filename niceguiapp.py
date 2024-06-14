@@ -14,19 +14,13 @@ class NiceGUIAPP:
 
     def __init__(self) -> None:
         self.result_text = ""
+
+        self.title = "Make 24"
+        self.favicon = Path("favicon.ico")
         self.build_ui()
 
     def build_ui(self):
-        app.add_static_file(
-            local_file=Path(__file__).parent / "assets" / "images" / "logo_256x256.ico",
-            url_path="/favicon.ico",
-        )
-
-        @ui.page(
-            path="/",
-            title="Make 24",
-            favicon="/favicon.ico",
-        )
+        @ui.page(path="/")
         def ui_body():
             # A container with space to both sides
             with ui.grid(columns=12).classes("w-full gap-0"):
@@ -57,12 +51,16 @@ class NiceGUIAPP:
 
     def run(self):
         ui.run(
+            title=self.title,
+            favicon=self.favicon,
             storage_secret="pick your private secret here",  # NOTE setting a secret is optional but allows for persistent storage per user
         )
 
     def run_with_fastapi(self, fastapi_app: FastAPI):
         ui.run_with(
             fastapi_app,
+            title=self.title,
+            favicon=self.favicon,
             # mount_path='/gui',  # NOTE this can be omitted if you want the paths passed to @ui.page to be at the root
             storage_secret="pick your private secret here",  # NOTE setting a secret is optional but allows for persistent storage per user
         )
