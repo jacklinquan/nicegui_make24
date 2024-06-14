@@ -1,14 +1,11 @@
-from typing import Optional
-
+#!/usr/bin/env python3
 from fastapi import FastAPI
 
+from niceguiapp import NiceGUIAPP
+
 app = FastAPI()
+NiceGUIAPP().run_with_fastapi(app)
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+if __name__ == "__main__":
+    print("Please start the app with the `uvicorn` command:")
+    print("uvicorn main:app --host 0.0.0.0 --port 8000")
