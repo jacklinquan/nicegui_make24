@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 from fastapi import FastAPI
 
-from niceguiapp import NiceGUIAPP
+import niceguiapp
 
 app = FastAPI()
-NiceGUIAPP().run_with_fastapi(app)
+niceguiapp.run_with_fastapi(app)
 
 if __name__ == "__main__":
     print("Please start the app with the `uvicorn` command:")
