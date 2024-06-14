@@ -19,13 +19,13 @@ class NiceGUIAPP:
     def build_ui(self):
         app.add_static_file(
             local_file=Path(__file__).parent / "assets" / "images" / "logo_256x256.ico",
-            url_path="/logo_256x256.ico",
+            url_path="/favicon.ico",
         )
 
         @ui.page(
             path="/",
             title="Make 24",
-            favicon="/logo_256x256.ico",
+            favicon="/favicon.ico",
         )
         def ui_body():
             # A container with space to both sides
